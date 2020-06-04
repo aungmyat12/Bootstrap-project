@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        p span,
+        h6 span,
+        h5 span,
+        h4 span,
+        h3 span,
+        h2 span,
+        h1 span{
+            font-family: 'Fira Sans', sans-serif;
+        }
+        h1,h2,h3,h4,h5,h6,p{
+            font-family: 'Poppins', sans-serif;
+        }
+        #home{
+            height: 100vh;
+        }
+        #home .container{
+            height: 100vh;
+        }
+        #home .row{
+            height: 100vh;
+        }
+        #home .col-md-6{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #home h1{
+            font-size: 43px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            color: black;
+        }
+        #home p{
+            margin-bottom: 30px;
+        }
+        #home button,
+        #services button,
+        .project-box button,
+        #blog button,
+        #contacts .contact-btn{
+            color: #fff;
+            background-color: #000;
+            padding: 15px 40px;
+            letter-spacing: 3px;
+            border-width: medium;
+            transition: all .3s linear;
+        }
+        #home button:hover,
+        #services button:hover,
+        #blog button:hover,
+        #contacts button:hover{
+            background: transparent;
+            color: #000;
+        }
+        @media screen and (max-width: 758px) {
+            #home{
+                height: 1000px;
+            }
+            #home .row{
+                height: 1000px;
+            }
+            #home .row .col-md-6 .home-inner{
+                margin-top: 30px;
+            }
+            #home .home-img{
+                padding: 0;
+                margin: 0;
+            }
+        }
+        .about-inner{
+            background-color: #fff;
+            padding: 60px 30px 40px 30px;
+            box-shadow: 0 0 4px rgba(44, 240, 230, 0.164);
+        }
+        .about-inner i{
+            margin-bottom: 15px;
+        }
+        .about-inner h3{
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .about-inner p{
+            font-size: 1rem;
+            word-spacing: 1px;
+            letter-spacing: .1px;
+        }
+        @media screen and (max-width: 758px) {
+            .about-inner{
+                margin-bottom: 15px;
+            }
+        }
+        .about-us-achievement{
+            padding: 240px 0 50px 0;
+            margin-top: -180px;
+        }
+        .about-us-achievement h1,h2{
+            font-weight: bold;
+            font-size: 40px;
+            letter-spacing: .1px;
+        }
+        .about-us-achievement p{
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+        .about-us-achievement h1{
+            font-size: 50px;
+            letter-spacing: 2px;
+        }
+        .skill-bar{
+            width: 10px;
+            height: 350px;
+            background: #afaeae;
+            margin: 0 auto;
+            border-radius: 8px;
+            padding: 5px 3px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .skill-per{
+            width: 4px;
+            height: 0%;
+            background: #000;
+            border-radius: 8px;
+            border-radius: 23px;
+            position: relative;
+            transition: 1s linear;
+        }
+        .skill-per::before{
+            content: attr(per);
+            position: absolute;
+            right: -60px;
+            background: #000;
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 3px;
+        }
+        .skill-per::after{
+            content: '';
+            border-radius: 2px;
+            position: absolute;
+            top: 10px;
+            right: -24px;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            transform: translateX(-50%) rotate(45deg);
+        }
+        #services{
+            padding: 100px 0;
+        }
+        .services-inner{
+            display: flex;
+            align-items: center;
+        }
+        #projects{
+            padding-bottom: 100px;
+        }
+        #projects h1{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #projects p{
+            font-size: 20px;
+        }
+        #projects p span{
+            font-weight: 300;
+        }
+        #projects .container{
+            padding-bottom: 100px;
+        }
+        .projects-inner{
+            margin-bottom: 20px;
+        }
+        .project-box{
+            background: #282828;
+            color: #fff;
+        }
+        .project-box h2{
+            font-size: 40px;
+        }
+        .project-box button{
+            background: #fff;
+            margin-top: 30px;
+            color: #000;
+            font-weight: 600;
+            border-radius: 10px;
+            border-color: #fff;
+        }
+        .project-box button:hover{
+            background: transparent;
+        }
+        .service-prices{
+            background: #fff;
+            padding: 50px 30px;
+            box-shadow: 0px 0px .9px rgba(212, 212, 212, 0.9);
+        }
+        .service-prices h5{
+            opacity: .5;
+        }
+        .service-prices h4 span,.service-prices p span{
+            font-weight: 300;
+        }
+        .service-prices h4{
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .service-prices p{
+            margin-bottom: 25px;
+        }
+        .blog-box{
+            padding: 100px 0;
+        }
+        .blog-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0 15px 0;
+        }
+        .blog-content h3{
+            font-size: 18px;
+        }
+        .blog-content i{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .blog-box p{
+            display: none;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .blog-inner{
+            border-bottom: 1px solid rgb(224, 224, 224);
+        }
+        #contacts p{
+            font-weight: 300;
+        }
+        #contacts input,
+        #contacts textarea{
+            width: 100%;
+            padding: 15px 10px;
+            border: 1px solid rgb(224, 224, 224);
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 25px;
+        }
+        #contacts input:focus,
+        #contacts textarea:focus{
+            box-shadow: 0 0 10px rgb(224, 224, 224);
+        }
+        #contacts h3{
+            font-size: 15px;
+            opacity: .5;
+        }
+        #contacts .contact-btn{
+            padding: 10px 40px;
+            border-radius: 8px;
+        }
+        footer{
+            background: #000;
+            padding: 100px 0 20px 0;
+            color: #fff;
+        }
+        footer li{
+            list-style: none;
+            display: inline-block;
+            margin-right: 30px;
+            font-size: 18px;
+        }
+        footer ul li a{
+            color: #fff;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        footer li .active,
+        footer li a:hover{
+            color: rgb(194, 193, 193);
+            text-decoration: none;
+        }
+        .social-icon i{
+            margin-right: 20px;
+            color: rgb(194, 193, 193);
+            transition: all .3s;
+        }
+        .social-icon i:hover{
+            color: #fff;
+        }
+        nav .social-icon i{
+            color: #000;
+            cursor: pointer;
+        }
+        nav ul{
+            margin-right: 80px;
+        }
+        nav ul li{
+            margin-right: 20px;
+        }
+        nav .social-icon i:hover{
+            color: rgb(0,0,0,.6);
+        }
+        #contacts #contact{
+            padding-bottom: 100px;
+        }
+        footer img{
+            margin-bottom: 20px;
+        }
+        hr{
+            border-top: 1px solid rgb(194, 193, 193);
+            margin-top: 50px;
+        }
+        .card{
+            border: none;
+        }
+        .card-body{
+            padding: 35px 30px 30px 30px;
+        }
+        .card-year{
+            font-weight: 400;
+            margin: 10px 0;
+        }
+        .card-year a{
+            color: rgb(158, 153, 153);
+            text-decoration: none;
+        }
+        .card-text{
+            opacity: .7;
+        }
+        .owl-dot{
+            margin-right: 10px;
+        }
+        .owl-prev{
+            left: -30px;
+        }
+        .owl-next{
+            right: -30px;
+        }
+        .owl-prev,.owl-next{
+            position: absolute;
+            top: 30%;
+        }
+        .owl-next span,.owl-prev span{
+            font-size: 60px;
+            color: #787878;
+        }
+        .owl-theme .owl-nav [class*="owl-"]:hover{
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#navbarResponsive">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="logo.webp" alt="">
+        </a>
+        <button class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#aboutUs" class="nav-link">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">SERVICES</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">PROJECTS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">BLOG</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contacts" class="nav-link">CONTACTS</a>
+                </li>
+            </ul>
+            <div class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="home-inner">
+                        <h1>Making Your Bussiness<br>
+                        Ideas <strong>Come True</strong>
+                        </h1>
+                        <p><span>We provide businesses with all financial services including financial analysis of the enterprise.</span></p>
+                        <button class="btn btn-secondary btn-md">READ MORE</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 home-img">
+                    <img src="pic1.webp" alt="" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aboutUs">
+        <div class="container">
+            <div class="row bd-dark">
+                <div class="col-md-4 text-center about-inner">
+                    <div class="icon">
+                        <i class="far fa-lightbulb fa-3x"></i>
+                    </div>
+                    <h3><span>Branding</span></h3>
+                    <p><span>
+                        Regular Business Law Assistance service includes monitoring the legal sphere of your business.
+                    </span></p>
+                </div>
+                <div class="col-md-4 text-center about-inner">
+                    <div class="icon">
+                        <i class="far fa-money-bill-alt fa-3x"></i>
+                    </div>
+                    <h3><span>Finance</span></h3>
+                    <p><span>We provide businesses with all financial services including consultations.</span></p>
+                </div>
+                <div class="col-md-4 text-center about-inner">
+                    <div class="icon">
+                        <i class="fas fa-chart-area btn-1 fa-3x"></i>
+                    </div>
+                    <h3><span>Marketing</span></h3>
+                    <p><span>
+                        Good marketing plan is crucial for businessmen who want to develop their businesses.
+                    </span></p>
+                </div>
+            </div>
+        </div>
+        <div class="about-us-achievement" style="background-color: black; color: #fff;">
+            <div class="container">
+                <div class="col-md-12 text-center">
+                    <div class="col-md-9 mx-md-auto">
+                        <h2>Our Achievements</h2>
+                        <p><span>Business plan is a base for future business project which includes all aspects and makes a forecast about your project’s payback.</span></p>
+                    </div>
+                </div>
+                <div class="row text-center about-us-number">
+                    <div class="col-md-3">
+                        <h1 class="counter">600</h1>
+                        <p>AWARDS WON</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="counter">585</h1>
+                        <p>SATISFIED CLIENTS</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="counter">560</h1>
+                        <p>STARTUP CROWTH</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="counter">280</h1>
+                        <p>AVERAGE PRICES</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 services-inner">
+                    <div class="services-box">
+                        <h1>Our Results</h1>
+                        <p><span>We are a team of like-minded people who do business, generate ideas and realize them. Finance, Marketing, Jurisprudence and Business Economy are our directions and we know how to deal with many financial issues.</span></p>
+                        <button class="btn btn-secondary btn-md">READ MORE</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row text-center skills-box">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="80"></div>
+                                </div>
+                                <div class="skill-name">JAN</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="90"></div>
+                                </div>
+                                <div class="skill-name">FEB</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="60"></div>
+                                </div>
+                                <div class="skill-name">MAR</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="50"></div>
+                                </div>
+                                <div class="skill-name">APR</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="70"></div>
+                                </div>
+                                <div class="skill-name">MAY</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            <div class="skill">
+                                <div class="skill-bar">
+                                    <div class="skill-per" per="80"></div>
+                                </div>
+                                <div class="skill-name">JUNE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="projects-img">
+                        <img src="pic2.webp" alt="" width="100%">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12 projects-inner">
+                        <h1>01. Startups</h1>
+                        <p><span>Startuppers receive assistance in financial, legal, economical and human resources</span></p>
+                    </div>
+                    <div class="col-md-12 projects-inner">
+                        <h1>02. Anti-Crisis</h1>
+                        <p><span>Marketing research, analysis and creating marketing plan</span></p>
+                    </div>
+                    <div class="col-md-12 projects-inner">
+                        <h1>03. Finance</h1>
+                        <p><span>We provide businesses with all financial services including consultations, financial analysis</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron text-center project-box">
+            <h2>Fusce venenatis aliquam?</h2>
+            <p class="lead"><span>We have over fifteen years of successful experience in financial sphere in the US.</span></p>
+            <button class="btn btn-secondary btn-md">GET STARTED</button>
+        </div>
+    </section>
+
+    <section id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="col-md-9 mx-md-auto">
+                        <h1>OUR PRICING</h1>
+                        <p><span>This service includes your business analysis, marketing researches and financial planning.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center service-prices">
+                    <h5>1 USER</h5>
+                    <h3>Preminum</h3>
+                    <h6 class="card-year">$200/ month</h6>
+                    <h4><span>Phasellus tincidunt ulcorper fringilla.</span></h4>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <button class="btn btn-secondary btn-md">Buy Now</button>
+                </div>
+                <div class="col-md-4 text-center service-prices">
+                    <h5>1 USER</h5>
+                    <h3>Preminum</h3>
+                    <h6>$200/ month</h6>
+                    <h4><span>Phasellus tincidunt ulcorper fringilla.</span></h4>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <button class="btn btn-secondary btn-md">Buy Now</button>
+                </div>
+                <div class="col-md-4 text-center service-prices">
+                    <h5>1 USER</h5>
+                    <h3>Preminum</h3>
+                    <h6>$200/ month</h6>
+                    <h4><span>Phasellus tincidunt ulcorper fringilla.</span></h4>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <p><i class="far fa-check-circle"></i><span>scelerisque ultricies rutrum.</span></p>
+                    <button class="btn btn-secondary btn-md">Buy Now</button>
+                </div>
+            </div>
+            <div class="blog-box">
+                <div class="row">
+                    <div class="col-md-5 blog-img">
+                        <img src="pic3.webp" alt="" width="100%">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-md-12 blog-inner" style="border-top: 1px solid rgb(224, 224, 224);">
+                            <div class="blog-content">
+                                <h3>&nbsp; Explore Multipurpose The Me</h3>
+                                <i class="fas fa-angle-down button" data-panelid="panel1"></i>
+                            </div>
+                            <p class="panel1"><span>
+                                We provide businesses with all financial services including consultations, financial analysis of the enterprise, accounting service, auditing services, banking and contract regulation. With our variety of financial help you will be able to resolve any financial questions, find the right solutions, and be sure your statements are all good and your continue doing successful and profitable business</span></p>
+                        </div>
+                        <div class="col-md-12 blog-inner">
+                            <div class="blog-content">
+                                <h3>&nbsp; Create Publishing Blog</h3>
+                                <i class="fas fa-angle-down button" data-panelid="panel2"></i>
+                            </div>
+                            <p class="panel2"><span>
+                                Advezone offers two options of this service: one-time consultation and regular assistance.If you have one or few questions regarding business law and you just need a one time consultation with an expert, this option is for you! This service is a perfect choice for those entrepreneurs who have an experience in business and just faced some unusual situation, or for startuppers who don’t know basics of business law.</span></p>
+                        </div>
+                        <div class="col-md-12 blog-inner">
+                            <div class="blog-content">
+                                <h3>&nbsp; Start Publishing Blog</h3>
+                                <i class="fas fa-angle-down button" data-panelid="panel3"></i>
+                            </div>
+                            <p class="panel3"><span>Good marketing plan is crucial for businessmen who want to develop their businesses. This service includes marketing research, analysis and creating marketing plan where you will see all the directions where to lead your business and which goods and services it’s more profitable to produce. </span></p>
+                        </div>
+                        <div class="col-md-12 blog-inner">
+                            <div class="blog-content">
+                                <h3>&nbsp; Operate Unique Shop</h3>
+                                <i class="fas fa-angle-down button" data-panelid="panel4"></i>
+                            </div>
+                            <p class="panel4"><span>
+                                We will show you how to decrease your expenses, find distribution channels and give advice about price policy. his service includes your business analysis, marketing researches and financial planning.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <div class="container" id="contact">
+            <div class="container mb-5 mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="ml-2 mr-2">
+                        <div class="card">
+                            <img src="pic4.jpg" alt="" owl-lazy>
+                            <div class="card-body">
+                                <h5 class="card-title">Networking in Business Security</h5>
+                                <h6 class="card-year">POSTED BY <a href="#">ADMIN FEBRUARY 1, 2019</a></h6>
+                                <p class="card-text"><span>
+                                    E-commerce sites have taken retail online and with such its audience. Once representatives used to be..
+                                </span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-2 mr-2">
+                        <div class="card">
+                            <img src="pic5.jpg" alt="" owl-lazy>
+                            <div class="card-body">
+                                <h5 class="card-title">The Uncharted Channel in Marketing Research</h5>
+                                <h6 class="card-year">POSTED BY <a href="#">ADMIN FEBRUARY 1, 2019</a></h6>
+                                <p class="card-text"><span>
+                                    You get professionally prepared high resolution images with Kava. Your visitor’s screen size is..
+                                </span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-2 mr-2">
+                        <div class="card">
+                            <img src="pic6.jpg" alt="" owl-lazy>
+                            <div class="card-body">
+                                <h5 class="card-title">There Are No Limits to Define Your Style.</h5>
+                                <h6 class="card-year">POSTED BY <a href="#">ADMIN FEBRUARY 1, 2019</a></h6>
+                                <p class="card-text"><span>
+                                    Add multiple WooCommerce widgets presented as pre-designed modules and equip your store with..
+                                </span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-2 mr-2">
+                        <div class="card">
+                            <img src="pic7.jpg" alt="" owl-lazy>
+                            <div class="card-body">
+                                <h5 class="card-title">You Get More with Lifetime Subscribtion</h5>
+                                <h6 class="card-year">POSTED BY <a href="#">ADMIN FEBRUARY 1, 2019</a></h6>
+                                <p class="card-text"><span>
+                                    We enhance them with additional features, options and add brand-new tools, so your theme would work..
+                                </span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-2 mr-2">
+                        <div class="card">
+                            <img src="pic8.jpg" alt="" owl-lazy>
+                            <div class="card-body">
+                                <h5 class="card-title">Nulla molestie finibus condimentum finibus</h5>
+                                <h6 class="card-year">POSTED BY <a href="#">ADMIN FEBRUARY 1, 2019</a></h6>
+                                <p class="card-text"><span>
+                                    Kava contains 30 demos as for now, and we’re planning to release more! Except astonishing demos, Kava..
+                                </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="col-md-8 mx-md-auto">
+                        <h2>Get In Touch</h2>
+                        <p><span>Finance and Jurisprudence are our main directions and we know how to deal with many financial issues and how to do business in today’s reality and conditions.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="pic9.webp" alt="" width="100%">
+                </div>
+                <div class="col-md-6">
+                    <form action="">
+                        <div class="login-form">
+                            <h3>Your Name (required)</h3>
+                            <input type="text" required>
+                        </div>
+                        <div class="login-form">
+                            <h3>Your Email (required)</h3>
+                            <input type="email" required>
+                        </div>
+                        <div class="login-form">
+                            <h3>Subject</h3>
+                            <input type="text">
+                        </div>
+                        <div class="login-form">
+                            <h3>Your Message </h3>
+                            <textarea name="" id="" cols="30" rows="6"></textarea>
+                        </div>
+                        <button class="btn btn-secondary btn-md contact-btn">SEND</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-2">
+                        <img src="logo1.webp" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <ul>
+                            <li><a class="active" href="#">HOME</a></li>
+                            <li><a href="#">ABOUT</a></li>
+                            <li><a href="#">BLOG</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p><span style="color: rgb(194, 193, 193); font-style: italic;">&copy; 2019 Zetter All Rights Reserved | Theme design by <label style="color: #fff; font-weight: bolder;">Zemez</label></span></p>
+            </div>
+        </footer>
+    </section>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jquery.waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+    <script src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script>
+            $('.owl-carousel').owlCarousel({
+                autoplay: true,
+                autoplayHoverPause: true,
+                lazyload: true,
+                margin: 5,
+                stagePadding: 5,
+                responsive: {
+                    0:{
+                        items: 1,
+                        nav: true
+                    },
+                    500:{
+                        items: 1,
+                        nav: true
+                    },
+                    728:{
+                        items: 2,
+                        nav: true
+                    },
+                    1200:{
+                        items: 3,
+                        nav: true,
+                    }
+                }
+            });
+            $(document).ready(function(){
+                $('.counter').counterUp();
+            })
+            $('.button').on('click',function(){
+                let panelId = $(this).attr('data-panelid');
+                $('.'+panelId).slideToggle(300);
+                // alert(panelId);
+            });
+            // $('.btn-2').on('click',function(){
+            //     $('.panel2').toggle();
+            // });
+            // $('.btn-3').on('click',function(){
+            //     $('.panel3').toggle();
+            // });
+            // $('.btn-4').on('click',function(){
+            //     $('.panel4').toggle();
+            // });
+            // $(document).ready(function(){
+            //     $('.counter').counterUp({
+            //         delay: 10,
+            //         time: 1000
+            //     });
+            // });
+            // $('.skill-bar').each(function(){
+            //     var $this = $(this);
+            //     var per = $(this).attr('per');
+            //     $this.css("height",per+'%');
+            //     $({animatedValue: 0}).animate({animatedValue: per},{
+            //         duration: 1000,
+            //         step: function(){
+            //             $this.attr('per', Math.floor(this.animatedValue) + '%');
+            //         },
+            //         complete: function(){
+            //             $this.attr('per', Math.floor(this.animatedValue) + '%');
+            //         }
+            //     });
+            // });
+            $(document).ready(function(){
+                $('.skill-per').each(function(){
+                    var $this = $(this);
+                    var per = $this.attr('per');
+                    $this.css("height",per+'%');
+                    $({animatedValue: 0}).animate({animatedValue: per},{
+                        duration: 1000,
+                        step: function(){
+                            $this.attr('per', Math.floor(this.animatedValue) + '%');
+                        },
+                        complete: function(){
+                            $this.attr('per', Math.floor(this.animatedValue) + '%');
+                        }
+                    });
+                });
+            })
+    </script>    
+</body>
+</html>
